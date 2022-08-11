@@ -1,4 +1,4 @@
-// import { JwtGuard } from './../auth/guards/jwt.guard';
+import { JwtGuard } from './../auth/guards/jwt.guard';
 import { CultureService } from './culture.service';
 import {
   Body,
@@ -31,7 +31,7 @@ export class CultureController {
     return this.cultureService.findAll();
   }
 
-//   @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard)
   @Get(':id')
   findCulture(@Param('id') id: string): Promise<CultureDocument> {
     return this.cultureService.find(id);

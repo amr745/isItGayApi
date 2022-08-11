@@ -4,8 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CultureModule } from './culture/culture.module';
 import { ConfigModule } from '@nestjs/config';
-// import { AuthModule } from './auth/auth.module';
-// import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -13,8 +13,8 @@ import { ConfigModule } from '@nestjs/config';
   }),
   MongooseModule.forRoot(process.env.DATABASE_URL),
   CultureModule,
-  // AuthModule,
-  // UserModule,
+  AuthModule,
+  UserModule,
 ],
   controllers: [AppController],
   providers: [AppService],
