@@ -14,9 +14,10 @@ export class CultureService {
     name: string,
     description: string,
     reason: string,
-    url: string
+    url: string,
+    vote: number
   ): Promise<CultureDocument> {
-    const newCulture = new this.cultureModel({ name, description, reason, url });
+    const newCulture = new this.cultureModel({ name, description, reason, url, vote });
     return newCulture.save();
   }
 
@@ -34,6 +35,7 @@ export class CultureService {
     newDescription: string,
     newReason: string,
     newUrl: string,
+    newVote: number,
   ): Promise<CultureDocument> {
     let existingCulture = await this.find(id);
 
@@ -41,6 +43,7 @@ export class CultureService {
     existingCulture.description = newDescription ?? existingCulture.description;
     existingCulture.reason = newReason ?? existingCulture.reason;
     existingCulture.url = newUrl ?? existingCulture.url;
+    existingCulture.vote = newVote ?? existingCulture.vote;
 
     return existingCulture.save();
   }

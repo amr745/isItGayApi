@@ -22,8 +22,9 @@ export class CultureController {
     @Body('description') description?: string,
     @Body('reason') reason?: string,
     @Body('url') url?: string,
+    @Body('vote') vote?: number,
   ): Promise<CultureDocument> {
-    return this.cultureService.create(name, description, reason, url);
+    return this.cultureService.create(name, description, reason, url, vote);
   }
 
   @Get()
@@ -31,7 +32,6 @@ export class CultureController {
     return this.cultureService.findAll();
   }
 
-  @UseGuards(JwtGuard)
   @Get(':id')
   findCulture(@Param('id') id: string): Promise<CultureDocument> {
     return this.cultureService.find(id);
@@ -44,8 +44,9 @@ export class CultureController {
     @Body('description') description?: string,
     @Body('reason') reason?: string,
     @Body('url') url?: string,
+    @Body('vote') vote?: number,
   ): Promise<CultureDocument> {
-    return this.cultureService.update(id, name, description, reason, url);
+    return this.cultureService.update(id, name, description, reason, url, vote);
   }
 
   @Delete(':id')

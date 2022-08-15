@@ -13,6 +13,8 @@ export class Culture {
   reason: string;
   @Prop()
   url: string;
+  @Prop()
+  vote: number;
 }
 
 export const CultureSchema = SchemaFactory.createForClass(Culture);
