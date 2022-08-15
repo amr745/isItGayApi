@@ -16,7 +16,6 @@ import { CultureDocument } from './culture.schema';
 export class CultureController {
   constructor(private cultureService: CultureService) {}
 
-  @UseGuards(JwtGuard)
   @Post()
   createCulture(
     @Body('name') name: string,
@@ -33,12 +32,12 @@ export class CultureController {
     return this.cultureService.findAll();
   }
 
+  @UseGuards(JwtGuard)
   @Get(':id')
   findCulture(@Param('id') id: string): Promise<CultureDocument> {
     return this.cultureService.find(id);
   }
 
-  @UseGuards(JwtGuard)
   @Put(':id')
   updateCulture(
     @Param('id') id: string,
@@ -51,7 +50,6 @@ export class CultureController {
     return this.cultureService.update(id, name, description, reason, url, vote);
   }
 
-  @UseGuards(JwtGuard)
   @Delete(':id')
   deleteCulture(@Param('id') id: string) {
     return this.cultureService.delete(id);
